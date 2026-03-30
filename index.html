@@ -1,28 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Asistente Virtual Accesible</title>
-
-    <link rel = "stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Asistente Virtual</h1>
+    <h1>Asistente Virtual Accesible</h1>
 
-    <p id ="contenido">
-        El usuario debe completar el procedimiento para realizar un trámite digital
-    </p>
-    
-    <!-- poner boton e integrar funcion (por hacer)-->
+    <!-- Contenido principal de la página (para HU-0001) -->
+    <div class="content-card">
+        <h2>Información del trámite</h2>
+        <p id="contenido">
+            El usuario debe completar el procedimiento para realizar un trámite digital de asignación de citas médicas.
+        </p>
+    </div>
 
-    <button onclick="activarAsistente()">
-        Mostrar
-    </button>
-    <script src= "script.js"></script>
+    <!-- Sección de la Guía Paso a Paso (HU-0002) -->
+    <div class="content-card" id="guiaTramite">
+        <h2>📋 Guía de Trámite: Asignación de Citas</h2>
+        <div id="pasoActual">
+            <p><strong>Paso <span id="numeroPaso">1</span> de <span id="totalPasos">3</span></strong></p>
+            <p id="textoPaso">Selecciona el tipo de especialidad médica que necesitas.</p>
+        </div>
+        <div id="opcionesPaso">
+            <!-- Las opciones cambian dinámicamente según el paso -->
+            <button class="opcion-btn" data-opcion="medicina-general">Medicina General</button>
+            <button class="opcion-btn" data-opcion="pediatria">Pediatría</button>
+            <button class="opcion-btn" data-opcion="cardiologia">Cardiología</button>
+        </div>
+        <div id="accionesGuia">
+            <button id="btnSiguiente" class="btn-asistente" style="display: none;">Continuar ➡️</button>
+        </div>
+    </div>
 
-    <h3>Resultado</h3>
-    <p id = "resultado"></p>
+    <!-- Botón del Asistente (HU-0001 y HU-0002) -->
+    <button id="btnActivarAsistente" class="btn-asistente principal">🤖 Activar Asistente Virtual</button>
 
+    <!-- Área para mostrar resultados del asistente (HU-0001) -->
+    <div class="content-card">
+        <h3>Resultado del Asistente</h3>
+        <p id="resultado"></p>
+    </div>
+
+    <!-- Área para notificaciones visuales (HU-0003) -->
+    <div id="notificacionVisual" class="notificacion" style="display: none;">
+        <p id="mensajeNotificacion"></p>
+        <button id="btnCerrarNotificacion" class="btn-cerrar">Aceptar</button>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
