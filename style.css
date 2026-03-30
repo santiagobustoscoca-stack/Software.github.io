@@ -1,10 +1,128 @@
 body {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     text-align: center;
-    background-color: black;
+    background-color: #121212; /* Fondo oscuro pero no negro absoluto para contraste */
     margin: 40px;
+    color: #e0e0e0;
 }
 
-p,h1,h2,h3 {
-    color:white
+/* Tarjetas de contenido */
+.content-card {
+    background-color: #1e1e1e;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 800px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    text-align: left;
+}
+
+h1, h2, h3 {
+    color: #ffffff;
+    text-align: center;
+}
+
+/* Botones generales */
+.btn-asistente {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    margin: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.btn-asistente:hover {
+    background-color: #0056b3;
+}
+
+.btn-asistente.principal {
+    background-color: #28a745;
+    font-size: 18px;
+    padding: 14px 28px;
+}
+
+.btn-asistente.principal:hover {
+    background-color: #218838;
+}
+
+/* Opciones de la guía */
+.opcion-btn {
+    background-color: #333;
+    color: white;
+    border: 1px solid #555;
+    padding: 10px 20px;
+    margin: 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.opcion-btn:hover {
+    background-color: #444;
+}
+
+/* Notificación visual (HU-0003) */
+.notificacion {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #2c3e50;
+    border-left: 8px solid #f39c12;
+    color: #ecf0f1;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+    max-width: 350px;
+    z-index: 1000;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.notificacion.exito {
+    border-left-color: #2ecc71;
+    background-color: #27ae60;
+}
+
+.notificacion.error {
+    border-left-color: #e74c3c;
+    background-color: #c0392b;
+}
+
+.btn-cerrar {
+    margin-top: 15px;
+    background-color: #555;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.btn-cerrar:hover {
+    background-color: #333;
+}
+
+/* Ajustes responsivos */
+@media (max-width: 600px) {
+    body {
+        margin: 20px;
+    }
+    .opcion-btn {
+        display: block;
+        width: 90%;
+        margin: 10px auto;
+    }
+    .notificacion {
+        left: 20px;
+        right: 20px;
+        bottom: 20px;
+        max-width: none;
+    }
 }
