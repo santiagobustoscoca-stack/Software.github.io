@@ -17,6 +17,6 @@ function activarAsistente(){
         let regex = new RegExp(palabra, "gi")
         textoSimple = textoSimple.replace(regex, reemplazos[palabra])
     }
-
+    
     document.getElementById("resultado").innerText = "Texto simplificado: " + textoSimple;
 }
