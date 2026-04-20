@@ -25,6 +25,7 @@ function crearPanel() {
 
   </div>`;
 
+  // 👇 EMPUJAR LA WEB
   document.body.style.display = "flex";
 
   const contenido = document.createElement("div");
