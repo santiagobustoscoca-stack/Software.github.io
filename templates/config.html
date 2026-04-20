@@ -5,24 +5,22 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h3>Configuración</h3>
+  <div class="config-container">
+        <h3>⚙️ Configuración</h3>
 
-  <label>
-    <input type="checkbox" id="modoCompleto">
-    Modo completo (lengua de señas + audios + textos)
-  </label>
+        <div class="option">
+            <input type="radio" name="modo" id="modoCompleto" value="completo">
+            <label for="modoCompleto"> Modo completo<br><small>Lengua de señas + audios + textos</small></label>
+        </div>
 
-  <br>
+        <div class="option">
+            <input type="radio" name="modo" id="soloTranscripcion" value="soloTranscripcion">
+            <label for="soloTranscripcion">Solo transcripción<br><small>Texto de audio/video</small></label>
+        </div>
 
-  <label>
-    <input type="checkbox" id="soloTranscripcion">
-    Solo transcripción de audio/video
-  </label>
+        <button id="saveBtn">Guardar</button>
+    </div>
 
-  <br><br>
-
-  <button id="saveBtn">Guardar</button>
-
-  <script src="config.js"></script>
+    <script src="config.js"></script>
 </body>
 </html>
