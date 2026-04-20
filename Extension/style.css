@@ -19,8 +19,9 @@ video {
   width: 150px;
   border-radius: 50%;
 }
+
 #mi-extension-panel {
-   width: 350px;
+  width: 350px;
   height: 100vh;
   background: #000;
   color: white;
@@ -28,10 +29,12 @@ video {
   justify-content: center;
   align-items: center;
 }
+
 .asistente-container {
   width: 90%;
   text-align: center;
 }
+
 .avatar-container video {
   width: 180px;
   height: 180px;
@@ -40,6 +43,7 @@ video {
   border: 3px solid orange;
   margin-bottom: 20px;
 }
+
 .controls button {
   display: block;
   width: 100%;
@@ -52,14 +56,17 @@ video {
   font-size: 16px;
   cursor: pointer;
 }
+
 .texto-actual {
   margin-top: 20px;
   font-size: 14px;
   opacity: 0.8;
 }
+
 #contenido-original {
   flex: 1;
 }
+
 .panel-content {
   text-align: center;
 }
@@ -71,4 +78,67 @@ button {
   border: none;
   border-radius: 10px;
   color: white;
+}
+
+body {
+  background: #111;
+  color: white;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 20px;
+}
+
+.config-container {
+  max-width: 300px;
+  margin: 0 auto;
+  background: #1e1e1e;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.option {
+  background: #2c2c2c;
+  margin: 15px 0;
+  padding: 12px;
+  border-radius: 12px;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.option.selected {
+  background: orange;
+  color: #111;
+}
+
+input[type="radio"] {
+  margin-right: 10px;
+  transform: scale(1.2);
+  accent-color: orange;
+}
+
+label {
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button {
+  background: orange;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 40px;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 20px;
+  width: 100%;
+}
+
+button:hover {
+  background: darkorange;
+}
+
+h3 {
+  margin-bottom: 20px;
 }

@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (startBtn) {
     startBtn.addEventListener("click", () => {
+      chrome.storage.local.set({ activo: true})
       chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
         chrome.tabs.sendMessage(tabs[0].id, { action: "start" });
       });
@@ -12,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (configBtn) {
     configBtn.addEventListener("click", () => {
-      window.location.href = "config.html";
+      window.location.href = "config.html"
     });
   }
 });

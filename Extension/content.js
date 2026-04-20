@@ -25,13 +25,10 @@ function crearPanel() {
 
   </div>`;
 
-  // 👇 EMPUJAR LA WEB
-  document.body.style.display = "flex";
-
   const contenido = document.createElement("div");
   contenido.id = "contenido-original";
 
-  while (document.body.firstChild) {
+  while (document.body.appendChild(panel)) {
     contenido.appendChild(document.body.firstChild);
   }
 
@@ -51,3 +48,8 @@ function crearPanel() {
     alert("Aquí irá configuración");
   };
 }
+chrome.runtime.onMessage.addListener((request) => {
+  if (data.active){
+    crearPanel();
+  }
+});
