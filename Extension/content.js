@@ -1,55 +1,114 @@
 function crearPanel() {
-  if (document.getElementById("mi-extension-panel")) return;
 
-  const panel = document.createElement("div");
-  panel.id = "mi-extension-panel";
+    if (document.getElementById("mi-extension-panel")) return;
 
-  panel.innerHTML = `
-  <div class="asistente-container">
+    const panel = document.createElement("div");
 
-    <div class="avatar-container">
-      <video id="avatar" autoplay loop muted>
-        <source src="${chrome.runtime.getURL("avatar.mp4")}" type="video/mp4">
-      </video>
-    </div>
+    panel.id = "mi-extension-panel";
 
-    <div class="controls">
-      <button id="btnPlay">Iniciar</button>
-      <button id="btnConfig">Configuración</button>
-      <button id="btnBack">Volver</button>
-    </div>
+    panel.style.position = "fixed";
+    panel.style.top = "0";
+    panel.style.right = "0";
+    panel.style.width = "350px";
+    panel.style.height = "100vh";
+    panel.style.background = "#ffffff";
+    panel.style.zIndex = "999999";
+    panel.style.borderLeft = "2px solid black";
+    panel.style.padding = "10px";
+    panel.style.overflowY = "auto";
 
-    <div class="texto-actual">
-      <p id="textoMostrado">Aquí aparecerá el contenido...</p>
-    </div>
+    panel.innerHTML = `
+        <h2>Traducción LSC</h2>
 
-  </div>`;
+        <button id="btnTraducir">
+            Traducir página
+        </button>
 
-  const contenido = document.createElement("div");
-  contenido.id = "contenido-original";
+        <hr>
 
-  while (document.body.appendChild(panel)) {
-    contenido.appendChild(document.body.firstChild);
-  }
+        <div id="contenedorVideos"></div>
+    `;
 
-  document.body.appendChild(contenido);
-  document.body.appendChild(panel);
+    document.body.appendChild(panel);
 
-  document.getElementById("btnBack").onclick = () => {
-    location.reload();
-  };
-
-  document.getElementById("btnPlay").onclick = () => {
-    const texto = document.body.innerText;
-    document.getElementById("textoMostrado").innerText = texto.substring(0, 300);
-  };
-
-  document.getElementById("btnConfig").onclick = () => {
-    alert("Aquí irá configuración");
-  };
+    document.getElementById("btnTraducir")
+        .onclick = traducirPagina;
 }
-chrome.runtime.onMessage.addListener((request) => {
-  if (data.active){
-    crearPanel();
-  }
-});
+
+async function traducirPagina(){
+
+    const mensajes =
+        document.querySelectorAll(".mensaje");
+
+    const response = await fetch(
+        chrome.runtime.getURL(
+            "data/diccionario.json"
+        )
+    );
+
+    const diccionario = await response.json();
+
+    const contenedor =
+        document.getElementById(
+            "contenedorVideos"
+        );
+
+    contenedor.innerHTML = "";
+
+    for(const mensaje of mensajes){
+
+        const texto = mensaje.innerText;
+
+        const palabras =
+            traducirALSC(texto);
+
+        const titulo =
+            document.createElement("h3");
+
+        titulo.innerText = texto;
+
+        contenedor.appendChild(titulo);
+
+        for(const palabra of palabras){
+
+            const ruta = diccionario[palabra];
+
+            if(ruta){
+
+                const video =
+                    document.createElement("video");
+
+                video.src =
+                    chrome.runtime.getURL(ruta);
+
+                video.width = 250;
+
+                video.controls = true;
+
+                video.autoplay = true;
+
+                contenedor.appendChild(video);
+
+                await esperarVideo(video);
+            }
+        }
+
+        const linea =
+            document.createElement("hr");
+
+        contenedor.appendChild(linea);
+    }
+}
+
+function esperarVideo(video){
+
+    return new Promise(resolve => {
+
+        video.onended = () => {
+            resolve();
+        };
+
+    });
+}
+
+crearPanel();
