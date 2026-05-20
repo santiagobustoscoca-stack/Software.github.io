@@ -111,4 +111,16 @@ function esperarVideo(video){
     });
 }
 
-crearPanel();
+chrome.runtime.onMessage.addListener(
+
+    (request, sender, sendResponse) => {
+
+        if(request.action === "start"){
+
+            crearPanel();
+
+        }
+
+    }
+
+);
