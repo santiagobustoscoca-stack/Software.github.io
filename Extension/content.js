@@ -112,15 +112,12 @@ function esperarVideo(video){
 }
 
 chrome.runtime.onMessage.addListener(
-
-    (request, sender, sendResponse) => {
+    async (request, sender, sendResponse) => {
 
         if(request.action === "start"){
-
             crearPanel();
-
+            await traducirPagina();
         }
 
     }
-
 );

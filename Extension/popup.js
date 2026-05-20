@@ -3,10 +3,18 @@ document.addEventListener("DOMContentLoaded", () => {
   const configBtn = document.getElementById("configBtn");
 
   if (startBtn) {
-    startBtn.addEventListener("click", () => {
-      chrome.storage.local.set({ activo: true})
-      chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-        chrome.tabs.sendMessage(tabs[0].id, { action: "start" });
+    startBtn.addEventListener("click", async () => {
+      const [tab] = await chrome.tabs.query({
+        active: true,
+        currentWindow: true
+      });
+      chrome.scripting.executeScript({
+        target: { tabId: tab.id },
+        files: ["translator.js", "content.js"]
+      }, () => {
+        chrome.tabs.sendMessage(tab.id, {
+          action: "start"
+        });
       });
     });
   }
