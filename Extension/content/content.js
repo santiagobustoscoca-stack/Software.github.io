@@ -1,46 +1,184 @@
 let translationActive = false;
 
+let modoActual = "completo";
+
 let ultimoTexto = "";
 
-chrome.runtime.onMessage.addListener((request) => {
+let panel;
 
-    if (request.action === "toggle") {
+let detectedText;
 
-        translationActive = request.active;
+let videoPlayer;
 
-        console.log("Modo traducción:", translationActive);
+chrome.runtime.onMessage.addListener(
+    (request) => {
+
+        if(request.action === "toggle"){
+
+            translationActive =
+                request.active;
+
+            modoActual =
+                request.modo;
+
+            if(translationActive){
+
+                crearPanel();
+
+            }else{
+
+                eliminarPanel();
+
+            }
+
+        }
+
+    }
+);
+
+document.addEventListener(
+    "mouseover",
+    async (e) => {
+
+        if(!translationActive) return;
+
+        const texto =
+            e.target.innerText;
+
+        if(!texto) return;
+
+        const limpio = texto
+            .trim()
+            .toLowerCase()
+            .replace(/[.,!?]/g, "");
+
+        if(limpio.length < 2) return;
+
+        if(limpio === ultimoTexto) return;
+
+        ultimoTexto = limpio;
+
+        detectedText.textContent =
+            limpio;
+
+        if(modoActual === "completo"){
+
+            await traducirTexto(limpio);
+
+        }
+
+    }
+);
+
+function crearPanel(){
+
+    if(document.getElementById("lsc-panel"))
+        return;
+
+    panel =
+        document.createElement("div");
+
+    panel.id = "lsc-panel";
+
+    panel.innerHTML = `
+
+        <div class="lsc-header">
+
+            <h2>Asistente LSC</h2>
+
+        </div>
+
+        <div class="lsc-body">
+
+            <h3>Texto detectado</h3>
+
+            <div id="detectedText">
+                Ninguno
+            </div>
+
+            <h3>Traducción LSC</h3>
+
+            <video
+                id="videoPlayer"
+                controls
+                autoplay
+                muted>
+            </video>
+
+        </div>
+
+    `;
+
+    document.body.appendChild(panel);
+
+    detectedText =
+        document.getElementById(
+            "detectedText"
+        );
+
+    videoPlayer =
+        document.getElementById(
+            "videoPlayer"
+        );
+
+}
+
+function eliminarPanel(){
+
+    const panel =
+        document.getElementById(
+            "lsc-panel"
+        );
+
+    if(panel){
+
+        panel.remove();
 
     }
 
-});
+}
 
-document.addEventListener("mouseover", async (e) => {
+async function traducirTexto(texto){
 
-    if (!translationActive) return;
+    const palabras =
+        texto.split(" ");
 
-    const element = e.target;
+    for(const palabra of palabras){
 
-    if (!element) return;
+        await reproducirVideo(palabra);
 
-    const texto = element.innerText;
+    }
 
-    if (!texto) return;
+}
 
-    const limpio = texto
-        .trim()
-        .toLowerCase()
-        .replace(/[.,!?]/g, "");
+function reproducirVideo(palabra){
 
-    if (limpio.length < 2) return;
+    return new Promise((resolve) => {
 
-    if (limpio === ultimoTexto) return;
+        videoPlayer.src =
+            chrome.runtime.getURL(
+                `videos/${palabra}.mp4`
+            );
 
-    ultimoTexto = limpio;
+        videoPlayer.load();
 
-    console.log("Texto detectado:", limpio);
+        videoPlayer.onended =
+            resolve;
 
-    chrome.storage.local.set({
-        currentText: limpio
+        videoPlayer.onerror = () => {
+
+            console.log(
+                "No existe video:",
+                palabra
+            );
+
+            resolve();
+
+        };
+
+        videoPlayer.play()
+            .catch(resolve);
+
     });
 
-});
+}

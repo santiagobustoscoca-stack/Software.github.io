@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Asistente LSC</title>
-
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -12,84 +11,46 @@
 
     <h1>Asistente LSC</h1>
 
-    <!-- CONFIGURACIÓN REQUERIDA -->
+    <!-- CONFIGURACIÓN -->
 
-    <div class="card" id="configWarning">
+    <div class="card">
 
-        <h3>Configuración inicial</h3>
+        <h3>Modo de traducción</h3>
 
-        <p>
-            Debes configurar el asistente antes de iniciar.
-        </p>
+        <label>
+            <input
+                type="radio"
+                name="modo"
+                value="completo"
+                checked>
 
-        <button id="configBtn">
-            Ir a configuración
-        </button>
+            Traducción + LSC
+        </label>
+
+        <br><br>
+
+        <label>
+            <input
+                type="radio"
+                name="modo"
+                value="transcripcion">
+
+            Solo transcripción
+        </label>
 
     </div>
 
-    <!-- CONTENIDO PRINCIPAL -->
+    <!-- BOTÓN -->
 
-    <div id="mainContent" style="display: none;">
+    <div class="card">
 
-        <!-- MODO ACTUAL -->
+        <button id="startBtn">
+            Iniciar traducción
+        </button>
 
-        <div class="card">
-
-            <h3>Modo actual</h3>
-
-            <p id="currentMode">
-                Cargando...
-            </p>
-
-        </div>
-
-        <!-- BOTÓN TRADUCCIÓN -->
-
-        <div class="card">
-
-            <button id="startBtn">
-                Iniciar traducción
-            </button>
-
-            <p id="status">
-                Traducción desactivada
-            </p>
-
-        </div>
-
-        <!-- TEXTO DETECTADO -->
-
-        <div class="card">
-
-            <h3>Texto detectado</h3>
-
-            <p id="detectedText">
-                Ninguno
-            </p>
-
-        </div>
-
-        <!-- VIDEO -->
-
-        <div class="card">
-
-            <h3>Traducción LSC</h3>
-
-            <video id="videoPlayer" controls autoplay muted>
-            </video>
-
-        </div>
-
-        <!-- BOTÓN CONFIG -->
-
-        <div class="card">
-
-            <button id="changeConfigBtn">
-                Cambiar configuración
-            </button>
-
-        </div>
+        <p id="status">
+            Traducción desactivada
+        </p>
 
     </div>
 

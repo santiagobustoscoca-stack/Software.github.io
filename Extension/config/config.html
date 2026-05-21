@@ -1,34 +1,57 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
+    <title>Configuración</title>
+
+    <link rel="stylesheet" href="../popup/popup.css">
 </head>
 
 <body>
-    <div class="config-container">
-        <h3>Configuración</h3>
+
+    <h1>Configuración</h1>
+
+    <div class="card">
+
+        <h3>Modo de traducción</h3>
 
         <label>
-            <input type="radio" name="modo" id="modoCompleto">
-            Modo completo (lengua de señas + audios + textos)
-        </label>
-        <br>
 
-        <label>
-            <input type="radio" name="modo" id="soloTranscripcion">
-            Solo transcripción de audio/video
+            <input
+                type="radio"
+                name="modo"
+                value="completo">
+
+            Traducción + LSC
+
         </label>
 
         <br><br>
 
-        <button id="saveBtn">Guardar</button>
-        <button id="backBtn">Volver</button>
+        <label>
+
+            <input
+                type="radio"
+                name="modo"
+                value="transcripcion">
+
+            Solo transcripción
+
+        </label>
+
+    </div>
+
+    <div class="card">
+
+        <button id="saveBtn">
+            Guardar configuración
+        </button>
 
     </div>
 
     <script src="config.js"></script>
+
 </body>
 
 </html>
