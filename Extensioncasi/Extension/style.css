@@ -1,0 +1,104 @@
+body {
+    margin: 0;
+    padding: 15px;
+
+    width: 320px;
+    min-height: 500px;
+
+    font-family: Arial, sans-serif;
+
+    background: #111;
+    color: white;
+}
+
+h1, h2, h3 {
+    color: #ff7a00;
+}
+
+p {
+    color: #ddd;
+}
+
+button {
+
+    width: 100%;
+
+    padding: 12px;
+
+    margin-top: 10px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #ff7a00;
+
+    color: white;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #ff9500;
+}
+
+.card {
+
+    background: #1b1b1b;
+
+    border: 1px solid #2d2d2d;
+
+    border-radius: 12px;
+
+    padding: 15px;
+
+    margin-bottom: 15px;
+}
+
+#videoPlayer {
+
+    width: 100%;
+
+    border-radius: 10px;
+
+    background: black;
+
+    margin-top: 10px;
+}
+
+#detectedText {
+
+    min-height: 40px;
+
+    padding: 10px;
+
+    background: #181818;
+
+    border-radius: 8px;
+
+    border: 1px solid #333;
+}
+
+#status {
+    margin-top: 10px;
+    text-align: center;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #ff7a00;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #111;
+}
