@@ -1,54 +1,46 @@
-const startBtn =
-    document.getElementById("startBtn");
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
 
-const statusText =
-    document.getElementById("status");
+        const startBtn =
+            document.getElementById(
+                "startBtn"
+            );
 
-let active = false;
+        const statusText =
+            document.getElementById(
+                "status"
+            );
 
-startBtn.addEventListener(
-    "click",
-    async () => {
+        startBtn.addEventListener(
+            "click",
+            async () => {
 
-        const modo =
-            document.querySelector(
-                'input[name="modo"]:checked'
-            ).value;
+                const modo =
+                    document.querySelector(
+                        'input[name="modo"]:checked'
+                    ).value;
 
-        active = !active;
+                const [tab] =
+                    await chrome.tabs.query({
+                        active: true,
+                        currentWindow: true
+                    });
 
-        const [tab] =
-            await chrome.tabs.query({
-                active: true,
-                currentWindow: true
-            });
+                chrome.tabs.sendMessage(
+                    tab.id,
+                    {
+                        action: "toggle",
+                        active: true,
+                        modo
+                    }
+                );
 
-        chrome.tabs.sendMessage(
-            tab.id,
-            {
-                action: "toggle",
-                active,
-                modo
+                statusText.textContent =
+                    "Traducción activada";
+
             }
         );
-
-        if(active){
-
-            statusText.textContent =
-                "Traducción activada";
-
-            startBtn.textContent =
-                "Detener traducción";
-
-        }else{
-
-            statusText.textContent =
-                "Traducción desactivada";
-
-            startBtn.textContent =
-                "Iniciar traducción";
-
-        }
 
     }
 );

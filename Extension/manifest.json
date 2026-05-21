@@ -26,7 +26,8 @@
         "<all_urls>"
       ],
       "js": [
-        "content/content.js"
+        "content/content.js",
+        "content/translator.js"
       ],
       "css": [
         "content/panel.css"
