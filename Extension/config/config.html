@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Configuración</title>
+
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+    <h1>Configuración</h1>
+
+    <div class="card">
+
+        <h3>Modo de traducción</h3>
+
+        <label>
+
+            <input
+                type="radio"
+                name="modo"
+                value="completo">
+
+            Traducción + LSC
+
+        </label>
+
+        <br><br>
+
+        <label>
+
+            <input
+                type="radio"
+                name="modo"
+                value="transcripcion">
+
+            Solo transcripción
+
+        </label>
+
+    </div>
+
+    <div class="card">
+
+        <button id="saveBtn">
+            Guardar configuración
+        </button>
+
+    </div>
+
+    <script src="config.js"></script>
+
+</body>
+
+</html>

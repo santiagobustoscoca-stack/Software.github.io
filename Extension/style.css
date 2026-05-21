@@ -1,43 +1,81 @@
-/* ===== GENERAL ===== */
-
 body {
+
     margin: 0;
-    padding: 15px;
+    padding: 16px;
 
     width: 320px;
-    min-height: 420px;
 
-    font-family: Arial, sans-serif;
+    background: #111111;
 
-    background: #111;
     color: white;
+
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-/* ===== TITULOS ===== */
+h1 {
 
-h1, h2, h3 {
     color: #ff7a00;
-    margin-bottom: 10px;
+
+    text-align: center;
+
+    margin-bottom: 20px;
+
+    font-size: 24px;
 }
 
-/* ===== TEXTO ===== */
+h2,
+h3 {
 
-p, label, span {
-    color: #ddd;
+    color: #ff7a00;
+
+    margin-top: 0;
 }
 
-/* ===== BOTONES ===== */
+.card {
+
+    background: #1c1c1c;
+
+    border: 1px solid #2f2f2f;
+
+    border-radius: 14px;
+
+    padding: 16px;
+
+    margin-bottom: 16px;
+
+    box-shadow:
+        0 0 10px rgba(0,0,0,0.3);
+}
+
+label {
+
+    color: #f0f0f0;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+
+    cursor: pointer;
+}
+
+input[type="radio"] {
+
+    accent-color: #ff7a00;
+
+    margin-right: 8px;
+
+    transform: scale(1.1);
+}
 
 button {
+
     width: 100%;
 
-    padding: 12px;
-
-    margin-top: 10px;
+    padding: 14px;
 
     border: none;
 
-    border-radius: 10px;
+    border-radius: 12px;
 
     background: #ff7a00;
 
@@ -53,122 +91,34 @@ button {
 }
 
 button:hover {
+
     background: #ff9500;
 }
 
-/* ===== INPUTS ===== */
+#status {
 
-input,
-select,
-textarea {
+    margin-top: 12px;
 
-    width: 100%;
-
-    padding: 10px;
-
-    margin-top: 8px;
-    margin-bottom: 12px;
-
-    border-radius: 8px;
-
-    border: 1px solid #333;
-
-    background: #1c1c1c;
-
-    color: white;
-}
-
-/* ===== TARJETAS ===== */
-
-.card,
-.config-card,
-.section {
-
-    background: #1b1b1b;
-
-    border: 1px solid #2d2d2d;
-
-    border-radius: 12px;
-
-    padding: 15px;
-
-    margin-bottom: 15px;
-}
-
-/* ===== PANEL LATERAL ===== */
-
-#lsc-panel {
-
-    position: fixed;
-
-    top: 0;
-    right: 0;
-
-    width: 340px;
-    height: 100vh;
-
-    background: #111;
-
-    border-left: 3px solid #ff7a00;
-
-    z-index: 999999;
-
-    overflow-y: auto;
-
-    padding: 20px;
-
-    box-shadow: -5px 0 15px rgba(0,0,0,0.4);
-}
-
-#lsc-panel h2 {
-    color: #ff7a00;
     text-align: center;
+
+    color: #cccccc;
+
+    font-size: 14px;
 }
-
-/* ===== VIDEOS ===== */
-
-.video-card {
-
-    background: #1d1d1d;
-
-    border-radius: 10px;
-
-    padding: 10px;
-
-    margin-bottom: 15px;
-
-    border: 1px solid #333;
-}
-
-.video-card p {
-
-    color: #ff7a00;
-
-    font-weight: bold;
-
-    margin-bottom: 10px;
-}
-
-.video-card video {
-
-    width: 100%;
-
-    border-radius: 10px;
-
-    background: black;
-}
-
-/* ===== SCROLL ===== */
 
 ::-webkit-scrollbar {
+
     width: 8px;
 }
 
 ::-webkit-scrollbar-thumb {
+
     background: #ff7a00;
+
     border-radius: 10px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #111;
+
+    background: #111111;
 }

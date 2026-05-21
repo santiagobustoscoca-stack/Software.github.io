@@ -1,28 +1,35 @@
 {
   "manifest_version": 3,
 
-  "name": "Asistente Accesible",
+  "name": "Asistente LSC",
 
   "version": "1.0",
 
-  "description": "Extensión para accesibilidad",
+  "description": "Traductor contextual LSC",
 
   "permissions": [
     "activeTab",
-    "storage",
-    "scripting"
+    "storage"
+  ],
+
+  "host_permissions": [
+    "<all_urls>"
   ],
 
   "action": {
-    "default_popup": "popup.html"
+    "default_popup": "popup/popup.html"
   },
 
   "content_scripts": [
     {
-      "matches": ["<all_urls>"],
+      "matches": [
+        "<all_urls>"
+      ],
       "js": [
-        "translator.js",
-        "content.js"
+        "content/content.js"
+      ],
+      "css": [
+        "content/panel.css"
       ]
     }
   ],
@@ -30,10 +37,11 @@
   "web_accessible_resources": [
     {
       "resources": [
-        "videos/*.mp4",
-        "data/diccionario.json"
+        "videos/*.mp4"
       ],
-      "matches": ["<all_urls>"]
+      "matches": [
+        "<all_urls>"
+      ]
     }
   ]
 }
